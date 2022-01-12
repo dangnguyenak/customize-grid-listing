@@ -1,0 +1,39 @@
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <dataSource name="sales_order_grid_data_source">
+        <settings>
+            <filterUrlParams>
+                <param name="entity_id">*</param>
+            </filterUrlParams>
+            <updateUrl path="mui/index/render"/>
+        </settings>
+    </dataSource>
+    <listingToolbar name="listing_top">
+        <filters name="listing_filters" template="Wgentech_CustomGrid/filters">
+            <filterInput name="refunded_to_store_credit" provider="${ $.parentName }"
+                         component="Wgentech_CustomGrid/js/custom-field"
+                         template="Wgentech_CustomGrid/custom-field">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="validation" xsi:type="array">
+                            <item name="validate-number" xsi:type="string">true</item>
+                            <item name="required-entry" xsi:type="string">true</item>
+                        </item>
+                    </item>
+                </argument>
+                <settings>
+                    <label translate="true">Refund To Store Credit</label>
+                    <dataScope>refunded_to_store_credit</dataScope>
+                </settings>
+            </filterInput>
+        </filters>
+    </listingToolbar>
+    <columns name="sales_order_columns">
+        <column name="refunded_to_store_credit">
+            <settings>
+                <dataType>text</dataType>
+                <filter>input</filter>
+                <label>Refund To Store Credit</label>
+            </settings>
+        </column>
+    </columns>
+</listing>
